@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sana bir şey yazdım</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#170f24;--bg2:#3d2146;--ink:#f6e6ea;--soft:#c9b3c4;--rose:#f0a3b8;--bub:#2b2038;--bub2:#4a2a4f;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Lora,Georgia,serif;line-height:1.6;background:linear-gradient(160deg,var(--bg1),var(--bg2),#2a1a3c,var(--bg1));background-size:300% 300%;animation:bg 18s ease infinite;overflow-x:hidden}
+@keyframes bg{50%{background-position:100% 100%}}
+main{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:24px 20px 90px}
+.hidden{display:none!important}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:12px 26px;color:#2a1330;background:var(--rose);font-weight:500;transition:transform .15s,box-shadow .3s}
+button:active{transform:scale(.95)}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#intro{text-align:center;padding-top:9vh}
+.env{position:relative;width:240px;height:160px;margin:0 auto 34px;cursor:pointer;animation:float 3.5s ease-in-out infinite}
+.env .body{position:absolute;inset:0;background:#f0a3b8;border-radius:10px;box-shadow:0 20px 50px #0008}
+.env .letter{position:absolute;left:14px;right:14px;top:14px;height:130px;background:#fff4f6;border-radius:6px;transition:transform .9s .35s ease}
+.env .flap{position:absolute;left:0;right:0;top:0;height:90px;background:#e88aa4;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .5s ease;z-index:3;border-radius:10px 10px 0 0}
+.env .front{position:absolute;inset:0;background:linear-gradient(135deg,#f5b3c5,#ea8fa9);clip-path:polygon(0 100%,0 30%,50% 65%,100% 30%,100% 100%);border-radius:0 0 10px 10px;z-index:2}
+.env .seal{position:absolute;left:50%;top:62px;transform:translateX(-50%);font-size:30px;z-index:4;animation:beat 1.4s infinite;transition:opacity .3s}
+.env.open{animation:none}.env.open .flap{transform:rotateX(180deg);z-index:0}.env.open .letter{transform:translateY(-95px)}.env.open .seal{opacity:0}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes beat{50%{transform:translateX(-50%) scale(1.25)}}
+h1{font-family:Caveat,cursive;font-size:3.1rem;line-height:1.05;margin:0 0 8px}
+.sub{color:var(--soft);margin:0}
+#chat{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.msg{align-self:flex-start;max-width:92%;background:var(--bub);padding:12px 16px;border-radius:18px 18px 18px 4px;animation:pop .4s cubic-bezier(.2,1.4,.4,1) both;box-shadow:0 6px 20px #0004}
+.dots{align-self:flex-start;background:var(--bub);border-radius:18px;padding:12px 16px;display:flex;gap:5px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--soft);animation:bounce 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{40%{transform:translateY(-6px);opacity:.5}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}
+h2{font-family:Caveat,cursive;font-size:2.3rem;margin:46px 0 10px}
+.promises{display:grid;gap:10px}
+.promises button{background:var(--bub);color:var(--ink);text-align:left;border-radius:16px;padding:14px 16px;border:1px solid #ffffff22;width:100%;animation:pop .5s both}
+.promises button:nth-child(2){animation-delay:.2s}.promises button:nth-child(3){animation-delay:.4s}
+.promises button span{display:none;color:var(--rose);margin-top:6px;font-style:italic}
+.promises button.on span{display:block;animation:pop .3s both}
+.ask{text-align:center;margin-top:56px;min-height:260px}
+.ask h2{font-size:2.8rem;margin-top:0}
+.row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+#yes{font-size:1.15rem;padding:14px 38px;animation:glow 1.8s infinite}
+@keyframes glow{50%{box-shadow:0 0 0 12px #f0a3b833,0 0 30px #f0a3b8aa}}
+#no{background:transparent;color:var(--soft);border:1px solid #ffffff33}
+.heart{position:fixed;bottom:-40px;z-index:0;pointer-events:none;animation:up 4.5s linear forwards}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.big{font-size:4rem;display:inline-block;animation:beat2 1s infinite}
+@keyframes beat2{50%{transform:scale(1.2)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<main>
+  <section id="intro">
+    <div class="env" id="env" role="button" tabindex="0" aria-label="Zarfı aç">
+      <div class="body"></div><div class="letter"></div><div class="front"></div><div class="flap"></div><div class="seal">💌</div>
+    </div>
+    <h1>Aşkım, sana bir şey yazdım.</h1>
+    <p class="sub">Zarfa dokun.</p>
+  </section>
+  <section id="chat" class="hidden" aria-live="polite"></section>
+  <section id="promises" class="hidden">
+    <h2>Sana üç sözüm var</h2>
+    <div class="promises">
+      <button>Kızdığımda susmayacağım. <span>Ne hissettiğimi sakin sakin sana söyleyeceğim.</span></button>
+      <button>Şakalarını, seni güldürmek istediğini bilerek karşılayacağım. <span>Sen benim en sevdiğim insansın.</span></button>
+      <button>Bir şey yanlış giderse önce konuşacağım. <span>Konuşmadan uzaklaşmak ikimizi de yorar.</span></button>
+    </div>
+  </section>
+  <section id="ask" class="ask hidden">
+    <h2>Beni affeder misin?</h2>
+    <div class="row"><button id="yes">Evet</button><button id="no">Hayır</button></div>
+  </section>
+</main>
+<script>
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1554730375279026176/0kcPq81FoMirr9tKvzksXkN112i0tQLD7RcDJ1NfEISJSGWDZ_qATLmyaAJrCXibf8Rs";
+
+const lines=[
+ "Aşkım, önce şunu söylemek istiyorum: sana sadece “özür dilerim” yazabilirdim ama sen bundan fazlasını hak ediyorsun.",
+ "Dün oyunda yazdığın mesaj senin için bir esprisiydi. Sen sadece eğlenmek ve beni güldürmek istemiştin.",
+ "Ben ise ters bir tepki verdim, seninle konuşmadım ve meseleyi gereğinden fazla uzattım.",
+ "Beni rahatsız eden bir şey olsa bile doğrusu sana küsmek değil, açıkça ve nazikçe konuşmaktı.",
+ "Seni üzdüm ve bunun farkındayım. Bunun için çok özür dilerim.",
+ "Sen benim için çok değerlisin. Bir anlık tepkimin yanında durmak yerine seni ve bizi seçmek istiyorum."
+];
+const $=id=>document.getElementById(id), wait=ms=>new Promise(r=>setTimeout(r,ms));
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+function hearts(){
+  if(reduce)return;
+  for(let i=0;i<40;i++){
+    setTimeout(()=>{
+      const h=document.createElement('div');h.className='heart';h.textContent=['💗','💖','💕','🌸'][i%4];
+      h.style.left=Math.random()*100+'vw';h.style.fontSize=(20+Math.random()*22)+'px';
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),4600);
+    },i*130);
+  }
+}
+async function openEnv(){
+  if($('env').classList.contains('open'))return;
+  $('env').classList.add('open');await wait(1400);
+  $('intro').classList.add('hidden');play();
+}
+$('env').onclick=openEnv;$('env').onkeydown=e=>{if(e.key==='Enter'||e.key===' ')openEnv()};
+
+async function play(){
+  const chat=$('chat');chat.classList.remove('hidden');
+  for(const t of lines){
+    const d=document.createElement('div');d.className='dots';d.innerHTML='<i></i><i></i><i></i>';chat.appendChild(d);
+    d.scrollIntoView({behavior:'smooth',block:'end'});
+    await wait(900+t.length*8);d.remove();
+    const m=document.createElement('div');m.className='msg';chat.appendChild(m);
+    for(let i=0;i<=t.length;i++){m.textContent=t.slice(0,i);if(i%3==0){m.scrollIntoView({block:'end'});await wait(reduce?0:18)}}
+    await wait(450);
+  }
+  $('promises').classList.remove('hidden');await wait(700);
+  $('ask').classList.remove('hidden');$('ask').scrollIntoView({behavior:'smooth',block:'center'});
+}
+document.querySelectorAll('.promises button').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+
+let noSent=false,yesSent=false;
+async function notify(text){
+  if(!WEBHOOK_URL)return;
+  try{await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+    body:JSON.stringify({content:text,allowed_mentions:{parse:['everyone']}})})}catch(e){}
+}
+
+const no=$('no');let dodge=0;
+const noTexts=['Hayır','Emin misin?','Peki…','Bi düşün','Lütfen :(','Yakalayamazsın'];
+function run(e){
+  if(yesSent)return;
+  e.preventDefault();
+  if(!noSent){noSent=true;notify('@everyone Hayır dedi')}
+  dodge++;
+  no.style.position='fixed';
+  no.style.left=Math.max(10,Math.random()*(innerWidth-110))+'px';
+  no.style.top=Math.max(10,Math.random()*(innerHeight-60))+'px';
+  no.textContent=noTexts[dodge%noTexts.length];
+}
+no.addEventListener('pointerenter',run);
+no.addEventListener('pointerdown',run);
+no.addEventListener('click',run);
+$('yes').onclick=()=>{
+  if(yesSent)return;yesSent=true;
+  notify('@everyone Evet dedi');
+  no.remove();
+  $('ask').innerHTML='<div class="big">💖</div><h2>Teşekkür ederim aşkım.</h2><p>Bana bir şans daha verdiğin için… Seni çok seviyorum.</p>';
+  hearts();
+};
+</script>
+</body>
+</html>
